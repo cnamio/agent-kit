@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Cnamio",
+  "description": "Custom domains for SaaS users: an HTTP API, a remote MCP server and one-file server SDKs that find a domain's DNS provider, create or list the DNS records and confirm propagation.",
+  "excludeFolders": ["submissions", "node_modules", ".next"],
+  "excludeFiles": ["LICENSE"],
+  "rules": [
+    "Keep CNAMIO_SECRET on the server only; browsers get 60-minute session tokens from POST https://api.cnamio.com/token.",
+    "Build the DNS records per user with recordsForUser (Node.js) or records_for_user (Python): a CNAME plus an ownership TXT.",
+    "Treat the domain.added webhook, verified over the raw body with CNAMIO_WEBHOOK_SECRET, as the only proof a domain is connected.",
+    "Pass a DNS provider API token straight to connectAutomatic; never store or log it.",
+    "Without credentials, use the sandbox session from POST https://api.cnamio.com/v1/agent/sandbox; nothing real is read or written.",
+    "There is no npm or PyPI package yet: save https://cnamio.com/sdk/cnamio.mjs or https://cnamio.com/sdk/cnamio.py into the project."
+  ]
+}

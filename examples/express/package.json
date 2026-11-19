@@ -1,0 +1,25 @@
+{
+  "name": "cnamio-example-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Add custom domains to an Express SaaS with Cnamio: runs on the sandbox without an account.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "sdk": "node scripts/get-sdk.mjs",
+    "predev": "node scripts/get-sdk.mjs",
+    "dev": "node --env-file-if-exists=.env --watch server.mjs",
+    "prestart": "node scripts/get-sdk.mjs",
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "pretest": "node scripts/get-sdk.mjs",
+    "test": "node --test \"test/*.test.mjs\"",
+    "presmoke": "node scripts/get-sdk.mjs",
+    "smoke": "node --env-file-if-exists=.env scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

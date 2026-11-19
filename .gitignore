@@ -1,0 +1,15 @@
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+# The Cnamio SDK files the examples download (commit them in your own project; here they would go stale).
+examples/*/lib/cnamio-sdk/
+examples/fastapi/app/cnamio.py
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+Thumbs.db

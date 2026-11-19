@@ -1,0 +1,18 @@
+{
+  "name": "cnamio",
+  "owner": {
+    "name": "Cnamio",
+    "email": "contato@cnamio.com",
+    "url": "https://cnamio.com"
+  },
+  "description": "Cnamio for coding agents: custom domains for your SaaS users.",
+  "plugins": [
+    {
+      "name": "cnamio",
+      "source": "./",
+      "description": "The Cnamio integration skill plus its remote MCP server: detect a domain's DNS provider, create or list the records, confirm propagation, verify the webhook.",
+      "category": "development",
+      "tags": ["custom-domains", "dns", "saas", "mcp"]
+    }
+  ]
+}

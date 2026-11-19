@@ -1,0 +1,33 @@
+{
+  "name": "cnamio-example-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Add custom domains to a Next.js (App Router) SaaS with Cnamio: runs on the sandbox without an account.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "sdk": "node scripts/get-sdk.mjs",
+    "predev": "node scripts/get-sdk.mjs",
+    "dev": "next dev",
+    "prebuild": "node scripts/get-sdk.mjs",
+    "build": "next build",
+    "start": "next start",
+    "pretest": "node scripts/get-sdk.mjs",
+    "test": "node --test \"test/*.test.ts\"",
+    "presmoke": "node scripts/get-sdk.mjs",
+    "smoke": "node --env-file-if-exists=.env.local scripts/smoke.ts"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

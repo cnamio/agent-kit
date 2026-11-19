@@ -1,0 +1,10 @@
+[project]
+name = "cnamio-example-fastapi"
+version = "1.0.0"
+description = "Add custom domains to a FastAPI SaaS with Cnamio: runs on the sandbox without an account."
+license = "MIT"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

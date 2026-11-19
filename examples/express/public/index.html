@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom domains (Cnamio example)</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { max-width: 44rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    form { display: grid; gap: .5rem; }
+    input, button { font: inherit; padding: .5rem .6rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; font-family: ui-monospace, monospace; font-size: .85rem; }
+    td, th { border: 1px solid #8884; padding: .3rem .4rem; text-align: left; word-break: break-all; }
+    .note { opacity: .75; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <h1>Connect your domain</h1>
+  <p class="note" id="mode"></p>
+  <form id="connect">
+    <label for="domain">Domain</label>
+    <input id="domain" name="domain" placeholder="shop.example.com" required autocomplete="off">
+    <label for="token">DNS provider API token (optional, used once and never stored)</label>
+    <input id="token" name="providerToken" type="password" autocomplete="off">
+    <button>Connect</button>
+  </form>
+  <div id="result" aria-live="polite"></div>
+  <script>
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    fetch('/api/mode').then(r => r.json()).then(({ mode }) => {
+      $('mode').textContent = mode === 'sandbox'
+        ? 'Sandbox: no account, nothing real is changed. Try shop.example.com, conflict.example.com or pending.example.com.'
+        : 'Using your Cnamio application.';
+    });
+    $('connect').addEventListener('submit', async event => {
+      event.preventDefault();
+      $('result').textContent = 'Checking…';
+      const r = await fetch('/api/domains', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ domain: $('domain').value, providerToken: $('token').value || undefined }) });
+      const body = await r.json();
+      $('token').value = '';
+      if (!r.ok) { $('result').textContent = body.message || body.error; return; }
+      const rows = (body.records || []).map(x => `<tr><td>${esc(x.type)}</td><td>${esc(x.host)}</td><td>${esc(x.value)}</td></tr>`).join('');
+      $('result').innerHTML = `<p>DNS at <strong>${esc(body.provider)}</strong>, ${body.setup === 'automatic' ? 'records created with your token' : 'create these records'}:</p>
+        <table><tr><th>Type</th><th>Name</th><th>Value</th></tr>${rows}</table>
+        <p><button id="status">Check status</button> <span id="state">${esc(body.status)}</span></p>`;
+      $('status').addEventListener('click', async () => {
+        const s = await (await fetch(`/api/domains/${encodeURIComponent(body.jobId)}`)).json();
+        $('state').textContent = s.connected ? 'connected' : (s.status || s.error);
+      });
+    });
+  </script>
+</body>
+</html>

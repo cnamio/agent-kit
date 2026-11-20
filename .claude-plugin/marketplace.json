@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "cnamio",
-      "source": "./",
+      "source": "./claude-plugin",
       "description": "The Cnamio integration skill plus its remote MCP server: detect a domain's DNS provider, create or list the records, confirm propagation, verify the webhook.",
       "category": "development",
       "tags": ["custom-domains", "dns", "saas", "mcp"]

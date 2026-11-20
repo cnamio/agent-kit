@@ -1,7 +1,7 @@
 {
   "name": "cnamio",
   "displayName": "Cnamio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Add \"connect your own domain\" to a SaaS: the Cnamio integration skill plus its remote MCP server. Works at once on a sandbox (no account); the free account is created by email.",
   "author": {
     "name": "Cnamio",
@@ -11,10 +11,24 @@
   "homepage": "https://cnamio.com/agents?utm_source=claude-plugin&utm_medium=agent",
   "repository": "https://github.com/cnamio/agent-kit",
   "license": "MIT",
-  "keywords": ["custom-domains", "dns", "saas", "cname", "domain-connect", "mcp", "webhooks"],
+  "keywords": [
+    "custom-domains",
+    "dns",
+    "saas",
+    "cname",
+    "domain-connect",
+    "mcp",
+    "webhooks"
+  ],
   "icon": "./.claude-plugin/icon.png",
   "documentationUrl": "https://cnamio.com/docs",
   "supportUrl": "https://cnamio.com/agents",
   "privacyPolicyUrl": "https://cnamio.com/privacy",
-  "termsOfServiceUrl": "https://cnamio.com/terms"
+  "termsOfServiceUrl": "https://cnamio.com/terms",
+  "mcpServers": {
+    "cnamio": {
+      "type": "http",
+      "url": "https://api.cnamio.com/mcp?utm_source=claude-plugin"
+    }
+  }
 }

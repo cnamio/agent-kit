@@ -3,14 +3,14 @@
 Portal: https://claude.ai/directory/manage → **Submit new**. Needs a paid Claude plan (Pro, Max or Ultra from the
 owner's account; on Team or Enterprise, an Owner), and the GitHub account connected on claude.ai with push access to
 the repository. The repository may be private during review (Claude GitHub App) but must be public before the listing
-goes live. Before submitting: `claude plugin validate . --strict` (and `--profile directory`) at the repository root.
+goes live. Before submitting: `claude plugin validate claude-plugin --strict --profile directory` (and `claude plugin validate .` for the marketplace). The plugin lives in `claude-plugin/` because the directory accepts from non-verified organizations only Markdown, text, JSON, YAML and images in the submitted folder (the examples hold code, `package.json` and `.env.example`).
 
 ## Plugin bundle
 
 | Step | What to enter |
 | --- | --- |
-| Source | Repository `cnamio/agent-kit`; plugin path: empty (the plugin is the repository root); branch `main` → **Validate** |
-| Listing details | Read from `.claude-plugin/plugin.json` and `README.md` (not editable in the portal) |
+| Source | Repository `cnamio/agent-kit`; plugin in a subfolder: `claude-plugin`; branch `main` → **Validate** |
+| Listing details | Read from `claude-plugin/.claude-plugin/plugin.json` and `claude-plugin/README.md` (not editable in the portal) |
 | Data handling | Reads or stores personal data: only the developer's email (and optional name and company) when they ask for an account through `start_signup`, after agreeing to the Terms and Privacy Policy. Sends data elsewhere: no; it talks only to its own MCP server, `https://api.cnamio.com/mcp`. Retention: as in https://cnamio.com/privacy. Meant for people under 18: no |
 | Compliance | Contact email `contato@cnamio.com`, and the four acknowledgements |
 | Review and submit | New versions: GitHub push webhook. Auto-publish: off until the first review is through |

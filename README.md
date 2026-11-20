@@ -144,7 +144,8 @@ const job = await cnamio.connect('shop.customer.com', records, { userId });
 | Path | What it is |
 | --- | --- |
 | [`skills/cnamio/SKILL.md`](skills/cnamio/SKILL.md) | The integration skill ([Agent Skills](https://agentskills.io) format). `npx skills add cnamio/agent-kit` installs it for Claude Code, Cursor, Codex and others |
-| [`.claude-plugin/`](.claude-plugin/), [`.mcp.json`](.mcp.json) | The Claude Code plugin (the skill plus the MCP server) and its marketplace |
+| [`claude-plugin/`](claude-plugin/) | The Claude Code plugin (the skill plus the MCP server), the folder submitted to the Claude plugin directory |
+| [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json), [`.mcp.json`](.mcp.json) | The marketplace that lists the plugin, and a project MCP configuration for this repository |
 | [`snippets/AGENTS.md`](snippets/AGENTS.md) | A block to paste into a project's `AGENTS.md`, `CLAUDE.md` or editor rules |
 | [`examples/nextjs`](examples/nextjs), [`examples/express`](examples/express), [`examples/fastapi`](examples/fastapi) | "Add custom domains to my SaaS": `npm run dev` (or `uvicorn`) runs on the sandbox without an account, then real credentials via the environment. Each has tests and a smoke script |
 | `context7.json`, `glama.json` | Listing metadata for Context7 and Glama |

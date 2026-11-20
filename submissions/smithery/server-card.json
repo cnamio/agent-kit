@@ -2,13 +2,58 @@
   "serverInfo": {
     "name": "cnamio",
     "title": "Cnamio",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Custom domains for your users: finds the DNS provider, creates the records with a provider token or returns the exact records to copy, confirms propagation and sends a signed webhook. Free sign-up; a sandbox needs no account.",
     "websiteUrl": "https://cnamio.com/agents?utm_source=smithery&utm_medium=agent",
     "icons": [
       {
         "src": "https://cnamio.com/brand/cnamio-app-icon.svg",
-        "mimeType": "image/svg+xml"
+        "mimeType": "image/svg+xml",
+        "sizes": [
+          "any"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-48.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "48x48"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-64.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "64x64"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-128.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "128x128"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-192.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "192x192"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-256.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "256x256"
+        ]
+      },
+      {
+        "src": "https://cnamio.com/brand/cnamio-app-icon-512.png",
+        "mimeType": "image/png",
+        "sizes": [
+          "512x512"
+        ]
       }
     ]
   },
@@ -19,7 +64,7 @@
       "bearer"
     ]
   },
-  "instructions": "Cnamio connects end users' custom domains to an app: it finds the DNS provider, creates the records with a provider token or returns the exact records to copy, confirms propagation and sends a signed webhook. Happy path from zero, in one session: (1) get_integration_guide and follow it in the codebase (server SDK: save https://cnamio.com/sdk/cnamio.mjs (types: cnamio.d.mts) or https://cnamio.com/sdk/cnamio.py into the project). (2) No credentials yet? start_sandbox returns a sandbox session: pass it as sandboxToken to check_domain, connect_domain and get_connection_status to run the flow end to end with any domain (nothing real is touched). (3) Ask the developer for their email and their agreement to the Terms and Privacy Policy, then start_signup: they get a verification link; opening it and accepting the Terms and Privacy Policy there creates their free test and live applications. They generate the secret in the dashboard and put CNAMIO_APPLICATION_ID and CNAMIO_SECRET in the server environment: never ask for the secret in the chat, never invent or hard-code it. (4) With credentials (HTTP Basic applicationId:secret on this server, or the SDK): check_domain, then connect_domain_automatic when connectMethods has api_token and the domain owner gives a provider API token, otherwise connect_domain (returns the records to create); then get_connection_status until completed, or rely on the domain.added webhook. DNS records that already exist are never deleted; the only one that can change is an SPF policy, extended with every existing term kept. When someone else manages the DNS (an agency, the IT team), create_share_link returns a url to send them. Connected domains keep being monitored: get_connection_status and list_connections report health (healthy, degraded, broken).",
+  "instructions": "Cnamio connects end users' custom domains to an app: it finds the DNS provider, creates the records with a provider token or returns the exact records to copy, confirms propagation and sends a signed webhook. Happy path from zero, in one session: (1) get_integration_guide and follow it in the codebase (server SDK: save https://cnamio.com/sdk/cnamio.mjs (types: cnamio.d.mts) or https://cnamio.com/sdk/cnamio.py into the project). (2) No credentials yet? start_sandbox returns a sandbox session: pass it as sandboxToken to check_domain, connect_domain and get_connection_status to run the flow end to end with any domain (nothing real is touched). (3) Ask the developer for their email and their agreement to the Terms and Privacy Policy, then start_signup: they get a verification link; opening it and accepting the Terms and Privacy Policy there creates their free test and live applications. They generate the secret in the dashboard and put CNAMIO_APPLICATION_ID and CNAMIO_SECRET in the server environment: never ask for the secret in the chat, never invent or hard-code it. (4) With credentials (HTTP Basic applicationId:secret on this server, or the SDK): check_domain, then connect_domain_automatic when connectMethods has api_token and the domain owner gives a provider API token, otherwise connect_domain (returns the records to create); then get_connection_status until completed, or rely on the domain.added webhook. DNS records that already exist are never deleted; the only one that can change is an SPF policy, extended with every existing term kept. When someone else manages the DNS (an agency, the IT team), create_share_link returns a url to send them. Connected domains keep being monitored: get_connection_status and list_connections report health (healthy, degraded, broken). Every domain tool result starts with the Cnamio application it acted as. When it says \"Cnamio Test application\" or \"agent sandbox session\", the credentials work: results come from a simulated DNS provider (provider \"sandbox\"). Do not report missing credentials; tell the user that real DNS needs the Production application (reconnect choosing it).",
   "tools": [
     {
       "name": "get_integration_guide",

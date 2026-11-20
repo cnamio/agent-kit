@@ -1,3 +1,5 @@
+<a href="https://cnamio.com"><img src="https://cnamio.com/brand/cnamio-app-icon-128.png" alt="Cnamio" width="64" height="64"></a>
+
 # Cnamio agent kit
 
 Everything a coding agent needs to add **"connect your own domain"** to a SaaS with [Cnamio](https://cnamio.com/?utm_source=agent-kit&utm_medium=agent):

@@ -12,6 +12,7 @@
   "repository": "https://github.com/cnamio/agent-kit",
   "license": "MIT",
   "keywords": ["custom-domains", "dns", "saas", "cname", "domain-connect", "mcp", "webhooks"],
+  "icon": "./.claude-plugin/icon.png",
   "documentationUrl": "https://cnamio.com/docs",
   "supportUrl": "https://cnamio.com/agents",
   "privacyPolicyUrl": "https://cnamio.com/privacy",
